@@ -1,0 +1,18 @@
+{
+  "name": "bloggy-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "env": "^0.0.2",
+    "express": "^4.17.1",
+    "nedb": "^1.8.0",
+    "nedb-promise": "^2.0.1",
+    "uuidv4": "^6.2.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
