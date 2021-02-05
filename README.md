@@ -3,6 +3,18 @@
 ## Project setup
 ```
 npm install
+
+cd backend
+
+npm install
+```
+
+## Start API
+
+```
+cd backend
+
+node app.js
 ```
 
 ### Compiles and hot-reloads for development
