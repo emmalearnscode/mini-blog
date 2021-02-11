@@ -1,18 +1,38 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul>
+      <li v-for="post in blogList" :key="post._id">
+        <h3>{{post.title}}</h3>
+        <p>{{post.content}}</p>
+        <button @click="fetchOnePost(post._id)">Read more</button>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+//import {mapState} from "vuex"
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  beforeCreate() {
+    this.$store.dispatch("fetchAllBlogPosts")
+  },
+  computed: {
+    
+  blogList() {
+    return this.$store.state.BlogModule.AllBlogPosts
+  },
+  
+  },
+  methods: {
+    fetchOnePost(id) {
+      this.$store.dispatch("fetchOneBlogPost", id)
+      
+      this.$router.push("post/" + id)
+
+    }
   }
+  
 }
 </script>
