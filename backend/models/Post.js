@@ -1,17 +1,24 @@
 const DataStore = require("nedb-promise");
 const posts = new DataStore({ filename: "./db/posts.db", autoload: true });
+
+function validate(title, content){
+  return title && content && (title.length > 0 || content.length > 0)
+}
+
 module.exports = {
   async getAll() {
     return await posts.find({});
   },
 
   async create(body) {
-    if (body.title == "" || body.content == "") return;
-    const newPost = await posts.insert({
-      title: body.title,
-      content: body.content,      
-    });
-    return newPost
+    const {title, content} = body
+    console.log(title, content);
+    if(validate(title, content)){
+      return await posts.insert({
+        title: body.title,
+        content: body.content,      
+      })    
+    }else{ return false }
   },
 
   async getOne(postID) {
@@ -19,12 +26,17 @@ module.exports = {
   },
 
   async update(body, postID) {
-    if (body.title == "" || body.content == "") return;
-    let post = await posts.findOne({ _id: postID });
-    post = await posts.update(post, {
-      $set: body,
-    });
-    return post;
+    const {title, content} = body
+    if(validate(title, content)){
+      let post = await posts.findOne({ _id: postID });
+      if(!post){ return null }
+      post = await posts.update(post, {
+        $set: body,
+      })
+      return post
+    }else{ 
+      return false 
+    }
   },
 
   async delete(postID) {
