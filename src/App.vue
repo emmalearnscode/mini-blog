@@ -43,13 +43,35 @@ body {
   }
 
   .body-container {
-    max-width: 1000px;
+    max-width: 800px;
       margin: 3rem auto;
-      padding: 0 2rem;
+      padding: 0 1rem;
   }
 
+  button {
+    display: inline-block;
+    margin: 1rem 0;
+    text-decoration: none;
+    background-color: #A097c3;
+    
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #777094;
+      color: #fff;
+    }
+}
+
+  button + button {
+     margin-left: 0.3rem;
+}
+
   header {
-    background-color: aquamarine;
+    
     background-image: url("./assets/mountains.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -72,11 +94,22 @@ body {
 
       a {
         text-decoration: none;
-        margin: 1rem;
+        margin: .3rem;
         background-color: #fff;
+        color: black;
         padding: 0.5rem 1rem;
         border-radius: 5px;
         text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #c3bbe2;
+          
+        }
+
+        &:visited {
+          color: black;
+        }
       }
     }
 
