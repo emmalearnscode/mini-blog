@@ -4,4 +4,3 @@ export const ADD_NEW_BLOG_POSTS = "ADD_NEW_BLOG_POSTS"
 
 export const FETCH_ONE_BLOG_POST = "FETCH_ONE_BLOG_POST"
 
-export const EDIT_BLOG_POST = "EDIT_BLOG_POST"

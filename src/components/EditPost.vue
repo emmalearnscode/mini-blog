@@ -34,6 +34,7 @@ created() {
   this.title = this.blogPost.title;
   this.content = this.blogPost.content
 },
+
 methods: {
   ...mapActions(['editBlogPost']),
 editPost() {

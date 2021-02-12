@@ -21,12 +21,8 @@ export default {
     },
     [Mutations.FETCH_ONE_BLOG_POST](state, payload) {
       state.currentPost = payload;
-      
     },
-    [Mutations.EDIT_BLOG_POST](state, payload) {
-      //Update AllBlogPosts, blogs and current post in state
-      console.log(state, payload);
-    }
+    
   },
   actions: {
     async addBlogPost({commit}, payload) {
@@ -50,7 +46,7 @@ export default {
       const post = await response.json()
       commit(Mutations.FETCH_ONE_BLOG_POST, post)
     },
-    async editBlogPost({commit}, payload) {
+    async editBlogPost({dispatch}, payload) {
       let body = {
         title: payload.title, 
         content: payload.content
@@ -61,7 +57,14 @@ export default {
         body: JSON.stringify(body)
       })
       //const updatedPost = await response.json();
-      commit(Mutations.EDIT_BLOG_POST, payload.id)
+      dispatch("fetchAllBlogPosts")
+      dispatch("fetchOneBlogPost", payload.id)
+    },
+    async deleteOnePost({dispatch}, payload) {
+      await fetch(`http://localhost:5000/api/posts/${payload}`, {
+        method: 'DELETE'
+      })
+      dispatch("fetchAllBlogPosts")
     }
   },
   

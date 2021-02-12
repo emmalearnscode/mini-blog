@@ -28,7 +28,8 @@ addPost() {
     title: this.title,
     content: this.content
     }
-  )
+  ),
+  this.$router.push("/")
 }
 }
 }
