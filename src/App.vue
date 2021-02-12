@@ -17,6 +17,10 @@
 
 <script>
 export default {
+  beforeCreate() {
+    this.$store.dispatch("fetchAllBlogPosts")
+    
+  },
   computed: {
     notHomePath() {
       return this.$route.path != "/"
