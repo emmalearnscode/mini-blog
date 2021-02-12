@@ -1,16 +1,19 @@
 <template>
   <div class="home">
     <ul>
-      <li v-for="post in blogList" :key="post._id">
+      <li v-for="post in blogListWithParas" :key="post._id">
         
         <h3>{{post.title}}</h3>
         <h4>21-21-2021</h4>
-        <div>
-          <p class="p-summary">{{post.content}}</p>
+        <div >
+          <div class="p-summary">
+          <p v-for="(item, index) in post.editedContent" :key="index" >{{item}}</p>
+          </div>
           <button @click="fetchOnePost(post._id)">Read more</button>
         </div>
       </li>
     </ul>
+    
   </div>
 </template>
 
@@ -25,6 +28,9 @@ export default {
   blogList() {
     return this.$store.state.BlogModule.AllBlogPosts
   },
+  blogListWithParas() {
+    return this.$store.getters.AllPostsWithParas
+  }
   
   },
   methods: {
@@ -58,6 +64,7 @@ ul {
 
   p {
   line-height: 1.4;
+  margin-bottom: 1rem;
   }
 
   .p-summary {

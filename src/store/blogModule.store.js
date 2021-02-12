@@ -6,6 +6,20 @@ export default {
     blogs: {},
     currentPost: {}
   },
+  getters: {
+    currentPostWithParas(state) {
+      return state.currentPost.content.split("\n")
+    },
+    AllPostsWithParas(state) {
+      const newArr = state.AllBlogPosts.map(post => {
+        let editedPost = {...post}
+        editedPost.editedContent = post.content.split("\n")
+        return editedPost
+      })
+      return newArr
+    }
+  },
+  
   mutations: {
     [Mutations.FETCH_ALL_BLOG_POSTS](state, payload) {
       state.AllBlogPosts = payload
@@ -27,6 +41,7 @@ export default {
   },
   actions: {
     async addBlogPost({commit}, payload) {
+      
       const response = await fetch('http://localhost:5000/api/posts', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

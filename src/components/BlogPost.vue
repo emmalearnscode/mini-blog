@@ -2,14 +2,17 @@
 <div>
 <section>
   <h3>{{blogPost.title}}</h3>
-  <p>{{blogPost.content}}</p>
+  
+  <p v-for="(item, index) in bpWithParas" :key="index">{{item}}</p>
 </section>
 <button @click="editPost(blogPost._id)">EDIT</button>
 <button class="inverted-btn" @click="openModal">DELETE</button>
 <modal v-if="isModalOpen" 
 :currentId="blogPost._id" 
 @closeTheModal="closeModal"></modal>
+
 </div>
+
 </template>
 
 <script>
@@ -35,6 +38,9 @@ computed: {
   blogPost() {
     
     return this.$store.state.BlogModule.currentPost
+  },
+  bpWithParas() {
+    return this.$store.getters.currentPostWithParas
   }
 },
 methods: {
@@ -60,6 +66,7 @@ h3 {
 
 p {
   line-height: 1.4;
+  margin-bottom: 1rem;
 }
 
 .inverted-btn {

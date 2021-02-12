@@ -49,7 +49,7 @@ mounted() {
   this.title = this.blogPost.title;
   this.content = this.blogPost.content
   
-  console.log(this.blogPost);
+  
   //console.log(this.content);
 },
 
