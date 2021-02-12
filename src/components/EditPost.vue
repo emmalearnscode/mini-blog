@@ -2,15 +2,16 @@
 <section>
   <form @submit.prevent="editPost">
     <label for="title">Title</label>
-    <input type="text" name="title" v-model="title" :placeholder="title">
+    <input type="text" name="title" v-model="title">
 
     <label for="blog-post-content" >Content</label>
     <textarea name="blog-post-content"
     cols="30" rows="10"
     v-model="content"
-    :placeholder="content"></textarea>
+    ></textarea>
     <div>
       <button >SAVE</button>
+      
     <button class="inverted-btn" @click="cancelEdit">CANCEL</button>
     
     </div>
@@ -36,8 +37,20 @@ computed: {
 },
 
 created() {
+  let id = this.$route.params.id
+  
+  this.$store.dispatch("fetchOneBlogPost", id)
+  
+  // this.title = this.blogPost.title;
+  // this.content = this.blogPost.content
+  
+},
+mounted() {
   this.title = this.blogPost.title;
   this.content = this.blogPost.content
+  
+  console.log(this.blogPost);
+  //console.log(this.content);
 },
 
 methods: {
@@ -55,6 +68,12 @@ editPost() {
 cancelEdit() {
   this.$router.push(`/post/${this.blogPost._id}`)
 }
+},
+watch: {
+  blogPost(newValue) {
+    this.title = newValue.title;
+  this.content = newValue.content
+  }
 }
 }
 </script>

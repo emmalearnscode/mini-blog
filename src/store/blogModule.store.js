@@ -21,6 +21,7 @@ export default {
     },
     [Mutations.FETCH_ONE_BLOG_POST](state, payload) {
       state.currentPost = payload;
+      
     },
     
   },

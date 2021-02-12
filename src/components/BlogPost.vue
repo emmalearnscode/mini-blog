@@ -22,9 +22,13 @@ export default {
       isModalOpen: false
     }
   },
-  beforeCreate() {
+ 
+  created() {
+    
     let id = this.$route.params.id
+    
     this.$store.dispatch("fetchOneBlogPost", id)
+    
 
   },
 computed: {

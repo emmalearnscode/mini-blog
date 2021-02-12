@@ -19,9 +19,7 @@
 
 export default {
   name: 'Home',
-  beforeCreate() {
-    this.$store.dispatch("fetchAllBlogPosts")
-  },
+  
   computed: {
     
   blogList() {
