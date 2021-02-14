@@ -21,6 +21,7 @@ export default {
     deletePost() {
       let id = this.$route.params.id;
       this.$store.dispatch("deleteOnePost", id)
+      document.body.style.overflowY = "visible"
     this.$router.push("/")
     },
     cancelModal() {

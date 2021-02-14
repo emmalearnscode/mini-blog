@@ -71,6 +71,8 @@ p {
   margin-bottom: 1rem;
 }
 
+
+
 .inverted-btn {
   background-color: #fff;
   border: 1px solid #A097c3;

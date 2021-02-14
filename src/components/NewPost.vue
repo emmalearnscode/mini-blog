@@ -2,12 +2,14 @@
 <section>
   <form @submit.prevent="addPost">
     <label for="title">Title</label>
-    <input type="text" name="title" v-model="title">
+    <input type="text" name="title" v-model="title" required>
 
     <label for="blog-post-content">Content</label>
     <textarea name="blog-post-content"
     cols="30" rows="10"
-    v-model="content"></textarea>
+    v-model="content"
+    required
+    ></textarea>
     <div>
     <button >SAVE</button>
     <button class="inverted-btn" @click="returnHome">CANCEL</button>
@@ -60,6 +62,27 @@ form {
 
   input {
      margin-bottom: 2rem;
+  }
+
+  textarea {
+    @media (min-height: 660px) {
+      height: 250px;
+    }
+    @media (min-height: 720px) {
+      height: 300px;
+    }
+    @media (min-height: 800px) {
+      height: 400px;
+    }
+    @media (min-height: 900px) {
+      height: 480px;
+    }
+    @media (min-height: 1000px) {
+      height: 580px;
+    }
+    @media (min-height: 1200px) {
+      height: 780px;
+    }
   }
   
 

@@ -35,7 +35,7 @@ export default {
       
     },
     [Mutations.ADD_NEW_BLOG_POSTS](state, payload) {
-      state.AllBlogPosts.push(payload)
+      state.AllBlogPosts.unshift(payload)
       state.blogs[payload._id] = payload
       
     },
