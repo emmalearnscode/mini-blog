@@ -38,6 +38,7 @@ export default {
       
       
       this.$router.push("post/" + id)
+      window.scrollTo(0,0)
 
     }
   }
@@ -65,6 +66,10 @@ ul {
   p {
   line-height: 1.4;
   margin-bottom: 1rem;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
   }
 
   .p-summary {

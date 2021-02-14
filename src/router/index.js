@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import NewPost from "@/components/NewPost.vue"
 import BlogPost from "@/components/BlogPost.vue"
 import EditPost from "@/components/EditPost.vue"
+import NotFound from "@/components/NotFound.vue"
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,14 @@ const routes = [
     name: 'EditPost',
     component: EditPost
   },
+  {
+    path: '/post',
+    redirect: "/"
+  },
+  {
+    path: '/:notFound(.*)',
+    component: NotFound
+  }
   
 ]
 

@@ -50,6 +50,10 @@ body {
     max-width: 800px;
       margin: 3rem auto;
       padding: 0 1rem;
+
+      @media (max-width: 767px) {
+        margin: 1rem auto;
+      }
   }
 
   button {
@@ -68,6 +72,7 @@ body {
       background-color: #777094;
       color: #fff;
     }
+
 }
 
   button + button {
@@ -114,12 +119,18 @@ body {
         &:visited {
           color: black;
         }
+
+        @media (max-width: 767px) {
+          font-size: 0.7rem;
+          padding: 0.4rem 0.6rem;
+        }
       }
     }
 
     h1 {
       place-self: start center;
       font-size: 3rem;
+      text-shadow: 1px 1px 20px #ffffff, -1px -1px 20px #fff;
     }
   }
 }

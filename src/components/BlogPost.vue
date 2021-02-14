@@ -10,7 +10,6 @@
 <modal v-if="isModalOpen" 
 :currentId="blogPost._id" 
 @closeTheModal="closeModal"></modal>
-
 </div>
 
 </template>
@@ -49,12 +48,15 @@ methods: {
   },
   openModal() {
     this.isModalOpen = true;
+    window.scrollTo(0,0)
+    document.body.style.overflowY = "hidden"
   },
   closeModal() {
-    
+    document.body.style.overflowY = "visible"
     this.isModalOpen = false;
   }
-}
+},
+
 }
 </script>
 

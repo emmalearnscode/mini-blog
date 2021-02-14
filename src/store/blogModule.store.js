@@ -1,22 +1,28 @@
 import * as Mutations from "./mutationTypes"
+import router from "../router"
 
 export default {
   state: {
     AllBlogPosts: [],
     blogs: {},
-    currentPost: {}
-  },
+    currentPost: {},
+ },
   getters: {
     currentPostWithParas(state) {
-      return state.currentPost.content.split("\n")
+      if (Object.keys(state.currentPost).length !== 0) {
+        return state.currentPost.content.split("\n")
+      }
+      
     },
     AllPostsWithParas(state) {
       const newArr = state.AllBlogPosts.map(post => {
-        let editedPost = {...post}
-        editedPost.editedContent = post.content.split("\n")
-        return editedPost
-      })
-      return newArr
+          let editedPost = {...post}
+          editedPost.editedContent = post.content.split("\n")
+          return editedPost
+        })
+        return newArr
+      
+      
     }
   },
   
@@ -37,7 +43,10 @@ export default {
       state.currentPost = payload;
       
     },
-    
+    [Mutations.PAGE_NOT_FOUND]() {
+      console.log("log error");
+      router.push("/NotFound")
+    }
   },
   actions: {
     async addBlogPost({commit}, payload) {
@@ -60,7 +69,12 @@ export default {
     async fetchOneBlogPost({commit}, payload) {
       const response = await fetch(`http://localhost:5000/api/posts/${payload}`)
       const post = await response.json()
-      commit(Mutations.FETCH_ONE_BLOG_POST, post)
+      if (response.status === 404) {
+        commit(Mutations.PAGE_NOT_FOUND)
+      } else {
+        commit(Mutations.FETCH_ONE_BLOG_POST, post)
+      }
+      
     },
     async editBlogPost({dispatch}, payload) {
       let body = {
